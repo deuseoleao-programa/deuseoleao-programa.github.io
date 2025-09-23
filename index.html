@@ -28,12 +28,6 @@ h1 {
   text-align: center;
 }
 
-p {
-  margin: 10px 0 20px 0;
-  font-size: 1.2rem;
-  text-align: center;
-}
-
 /* Navegação */
 .navbar {
   display: flex;
@@ -52,6 +46,12 @@ p {
 .navbar a:hover {
   background: #333;
   border-radius: 5px;
+}
+
+p {
+  margin: 10px 0 20px 0;
+  font-size: 1.2rem;
+  text-align: center;
 }
 
 .container {
@@ -86,7 +86,7 @@ iframe {
   width: 100%;
   height: 800px;
   border: none;
-  pointer-events: none; /* impede clique direto */
+  pointer-events: none;
 }
 
 /* Fullscreen button */
@@ -208,8 +208,8 @@ iframe {
       <button class="fullscreen-btn" onclick="openFullscreen('game1')">Jogar em Tela Cheia</button>
     </div>
 
-    <!-- Descrição do jogo -->
-    <div class="game-description">
+    <!-- Descrição do jogo principal -->
+    <div class="game-description" id="game-description">
       FPS Shoot é um jogo de tiro em primeira pessoa. Use W A S D ou as setas para se mover e clique para atirar.
     </div>
 
@@ -229,9 +229,9 @@ iframe {
     <!-- Jogos adicionais -->
     <h2>Outros Jogos</h2>
     <div class="games-list">
-      <div class="game-thumb" onclick="changeGame('https://funhtml5games.com?embed=shoot')">FPS Shoot</div>
-      <div class="game-thumb" onclick="changeGame('https://funhtml5games.com?embed=adventure')">Aventura</div>
-      <div class="game-thumb" onclick="changeGame('https://funhtml5games.com?embed=strategy')">Estratégia</div>
+      <div class="game-thumb" onclick="changeGame('https://funhtml5games.com?embed=shoot', 'FPS Shoot é um jogo de tiro em primeira pessoa. Use W A S D ou as setas para se mover e clique para atirar.')">FPS Shoot</div>
+      <div class="game-thumb" onclick="changeGame('https://funhtml5games.com?embed=adventure', 'Aventura: explore mapas e complete missões em um mundo cheio de desafios.')">Aventura</div>
+      <div class="game-thumb" onclick="changeGame('https://funhtml5games.com?embed=strategy', 'Estratégia: planeje seus movimentos e derrote os inimigos usando tática e inteligência.')">Estratégia</div>
     </div>
   </div>
 
@@ -285,11 +285,12 @@ document.addEventListener("fullscreenchange", () => {
   }
 });
 
-// Troca de jogos
-function changeGame(url){
+// Troca de jogos com atualização da descrição
+function changeGame(url, description){
   const iframe = document.getElementById('game1');
   iframe.src = url;
   iframe.style.pointerEvents = "auto";
+  document.getElementById('game-description').innerText = description;
   openFullscreen('game1');
 }
 </script>
