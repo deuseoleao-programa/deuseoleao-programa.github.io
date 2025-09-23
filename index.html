@@ -34,7 +34,7 @@ header h1 {
   color: #ff4500;
 }
 
-/* Navegação */
+/* Navbar */
 .navbar {
   display: flex;
   justify-content: center;
@@ -56,6 +56,24 @@ header h1 {
   background: #ff4500;
   border-radius: 5px;
   color: #111;
+}
+
+/* Destaque no topo */
+.hero-banner {
+  background: #222;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  font-size: 1.3rem;
+  color: #ffcc00;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+  margin-bottom: 20px;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 10px #ffcc00; }
+  to { text-shadow: 0 0 25px #ff4500; }
 }
 
 /* Container principal */
@@ -81,7 +99,7 @@ header h1 {
 .game-card {
   position: relative;
   width: 100%;
-  height: calc(100vh - 200px); /* altura total do jogo visível */
+  height: calc(100vh - 300px);
   max-width: 1200px;
   margin: 0 auto;
   border-radius: 12px;
@@ -101,7 +119,7 @@ iframe {
 
 /* Botão flutuante */
 .fullscreen-btn {
-  position: fixed; /* agora flutuante */
+  position: fixed;
   bottom: 20px;
   right: 20px;
   padding: 12px 25px;
@@ -120,6 +138,7 @@ iframe {
 .fullscreen-btn:hover {
   background: #ff6347;
   transform: scale(1.1);
+  box-shadow: 0 0 20px #ff4500;
 }
 
 /* Descrição do jogo */
@@ -134,12 +153,42 @@ iframe {
   line-height: 1.5;
 }
 
+/* Seção de destaques de jogos */
+.featured-games {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.featured-game {
+  width: 180px;
+  height: 100px;
+  background: #222;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #fff;
+  font-size: 0.9rem;
+  transition: 0.3s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+.featured-game:hover {
+  background: #ff4500;
+  transform: scale(1.05);
+}
+
 /* Responsividade */
 @media(max-width: 900px){
   .game-card { height: 60vh; }
   iframe { height: 100%; }
   .fullscreen-btn { padding: 10px 20px; font-size: 0.9rem; }
   header h1 { font-size: 1.8rem; }
+  .featured-game { width: 45%; height: 80px; }
 }
 
 @media(max-width: 600px){
@@ -147,6 +196,7 @@ iframe {
   iframe { height: 100%; }
   .fullscreen-btn { padding: 8px 15px; font-size: 0.8rem; }
   header h1 { font-size: 1.5rem; }
+  .featured-game { width: 80%; height: 70px; }
 }
 </style>
 </head>
@@ -162,6 +212,11 @@ iframe {
 </header>
 
 <div class="container">
+
+  <div class="hero-banner">
+    🔥 Bem-vindo ao Portal de Jogos FPS! Explore, jogue e divirta-se com os melhores jogos online grátis! 🎮
+  </div>
+
   <!-- Banner topo -->
   <div class="ad-top">
     <ins class="adsbygoogle"
@@ -180,6 +235,15 @@ iframe {
 
   <div class="game-description" id="game-description">
     FPS Shoot é um jogo de tiro em primeira pessoa. Use W A S D ou as setas para se mover e clique para atirar.
+  </div>
+
+  <!-- Destaques de outros jogos -->
+  <div class="featured-games">
+    <div class="featured-game">FPS Shoot</div>
+    <div class="featured-game">Aventura Épica</div>
+    <div class="featured-game">Estratégia Tática</div>
+    <div class="featured-game">Corrida Radical</div>
+    <div class="featured-game">Puzzle Desafiante</div>
   </div>
 
   <!-- Banner inferior -->
