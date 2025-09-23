@@ -5,26 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portal de Jogos FPS</title>
 
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1241009751506011" crossorigin="anonymous"></script>
+  <!-- Código do Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1241009751506011"
+     crossorigin="anonymous"></script>
 
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #111;
-      color: #fff;
+      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+      color: white;
       margin: 0;
       padding: 0;
     }
 
     header {
       background: #222;
-      padding: 15px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
+      padding: 20px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
     }
 
     header h1 {
@@ -32,91 +33,98 @@
       font-size: 2rem;
     }
 
+    nav {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
     nav a {
-      color: #fff;
+      color: white;
       text-decoration: none;
-      margin-left: 15px;
-      padding: 6px 12px;
-      border-radius: 5px;
+      padding: 8px 15px;
       background: #333;
-      transition: 0.3s;
+      border-radius: 6px;
+      transition: background 0.3s;
     }
 
     nav a:hover {
       background: #ff4500;
     }
 
-    .intro {
-      text-align: center;
-      margin: 30px 10px;
-    }
-
-    .categories {
+    .category-container {
       display: flex;
       justify-content: center;
-      gap: 10px;
+      gap: 15px;
+      margin: 20px 0;
       flex-wrap: wrap;
-      margin-bottom: 20px;
     }
 
-    .categories div {
-      padding: 10px 20px;
+    .category {
       background: #333;
+      padding: 10px 20px;
       border-radius: 8px;
       cursor: pointer;
-      transition: 0.3s;
+      transition: background 0.3s;
     }
 
-    .categories div:hover {
+    .category:hover {
       background: #ff4500;
     }
 
-    .games-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
+    .game-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
       padding: 20px;
     }
 
     .game-card {
-      background: #222;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.6);
-      transition: transform 0.3s, box-shadow 0.3s;
       position: relative;
+      width: 500px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #111;
+      box-shadow: 0px 4px 20px rgba(0,0,0,0.6);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .game-card:hover {
       transform: scale(1.05);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.9);
+      box-shadow: 0px 8px 25px rgba(0,0,0,0.9);
     }
 
-    .game-card iframe {
+    iframe {
       width: 100%;
-      height: 250px;
+      height: 320px;
       border: none;
+      display: block;
     }
 
     .fullscreen-btn {
       position: absolute;
       bottom: 10px;
       right: 10px;
+      padding: 8px 15px;
       background: #ff4500;
+      color: white;
       border: none;
-      color: #fff;
-      padding: 6px 12px;
-      border-radius: 5px;
+      border-radius: 6px;
       cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.3s ease;
     }
 
     .fullscreen-btn:hover {
       background: #ff6347;
     }
+
   </style>
 </head>
 <body>
 
+  <!-- Header com Menu -->
   <header>
     <h1>🎮 Portal de Jogos FPS</h1>
     <nav>
@@ -124,60 +132,71 @@
       <a href="#tiros">Tiros</a>
       <a href="#aventura">Aventura</a>
       <a href="#estrategia">Estratégia</a>
-      <a href="#todos">Todos</a>
     </nav>
   </header>
 
-  <div class="intro">
-    <h2>Bem-vindo ao Portal de Jogos FPS!</h2>
-    <p>Escolha sua categoria e divirta-se com os melhores jogos online.</p>
+  <p style="text-align:center; margin: 20px 0; font-size:1.2rem;">Clique em qualquer jogo abaixo e divirta-se!</p>
+
+  <!-- Categorias -->
+  <div class="category-container">
+    <div class="category" onclick="filterGames('acao')">Ação</div>
+    <div class="category" onclick="filterGames('tiros')">Tiros</div>
+    <div class="category" onclick="filterGames('aventura')">Aventura</div>
+    <div class="category" onclick="filterGames('estrategia')">Estratégia</div>
+    <div class="category" onclick="filterGames('todos')">Todos</div>
   </div>
 
-  <div class="categories">
-    <div onclick="filterGames('acao')">Ação</div>
-    <div onclick="filterGames('tiros')">Tiros</div>
-    <div onclick="filterGames('aventura')">Aventura</div>
-    <div onclick="filterGames('estrategia')">Estratégia</div>
-    <div onclick="filterGames('todos')">Todos</div>
-  </div>
-
-  <div class="games-grid">
-    <div class="game-card acao">
+  <!-- Jogos -->
+  <div class="game-container">
+    <!-- Jogo 1 -->
+    <div class="game-card acao" id="game-card1">
       <iframe id="game1" src="https://funhtml5games.com?embed=shoot" allowfullscreen></iframe>
       <button class="fullscreen-btn" onclick="openFullscreen('game1')">Tela Cheia</button>
     </div>
-    <div class="game-card tiros">
+
+    <!-- Jogo 2 (Exemplo Adicional) -->
+    <div class="game-card tiros" id="game-card2">
       <iframe id="game2" src="https://funhtml5games.com?embed=gun" allowfullscreen></iframe>
       <button class="fullscreen-btn" onclick="openFullscreen('game2')">Tela Cheia</button>
     </div>
-    <div class="game-card aventura">
+
+    <!-- Jogo 3 (Exemplo Adicional) -->
+    <div class="game-card aventura" id="game-card3">
       <iframe id="game3" src="https://funhtml5games.com?embed=adventure" allowfullscreen></iframe>
       <button class="fullscreen-btn" onclick="openFullscreen('game3')">Tela Cheia</button>
-    </div>
-    <div class="game-card estrategia">
-      <iframe id="game4" src="https://funhtml5games.com?embed=strategy" allowfullscreen></iframe>
-      <button class="fullscreen-btn" onclick="openFullscreen('game4')">Tela Cheia</button>
     </div>
   </div>
 
   <script>
+    // Função para abrir em tela cheia
     function openFullscreen(id) {
-      const elem = document.getElementById(id);
+      let elem = document.getElementById(id);
       if (elem.requestFullscreen) {
         elem.requestFullscreen();
-      } else if (elem.mozRequestFullScreen) {
+      } else if (elem.mozRequestFullScreen) { // Firefox
         elem.mozRequestFullScreen();
-      } else if (elem.webkitRequestFullscreen) {
+      } else if (elem.webkitRequestFullscreen) { // Chrome, Safari e Opera
         elem.webkitRequestFullscreen();
-      } else if (elem.msRequestFullscreen) {
+      } else if (elem.msRequestFullscreen) { // IE/Edge
         elem.msRequestFullscreen();
       }
     }
 
+    // Sair da tela cheia com F11
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "F11") {
+        e.preventDefault();
+        if (document.fullscreenElement) {
+          document.exitFullscreen();
+        }
+      }
+    });
+
+    // Filtrar jogos por categoria
     function filterGames(category) {
       const games = document.querySelectorAll('.game-card');
       games.forEach(game => {
-        if(category === 'todos') {
+        if (category === 'todos') {
           game.style.display = 'block';
         } else {
           game.style.display = game.classList.contains(category) ? 'block' : 'none';
