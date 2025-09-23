@@ -1,136 +1,164 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portal de Jogos FPS</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal de Jogos FPS</title>
 
-  <!-- Código do Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1241009751506011"
-     crossorigin="anonymous"></script>
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1241009751506011"
+crossorigin="anonymous"></script>
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
-      color: white;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-    }
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+  color: white;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
 
-    h1 {
-      background: #222;
-      padding: 20px;
-      margin: 0;
-      font-size: 2.5rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    }
+h1 {
+  background: #222;
+  padding: 20px;
+  margin: 0;
+  font-size: 2.5rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
 
-    p {
-      margin: 15px 0;
-      font-size: 1.2rem;
-    }
+p {
+  margin: 15px 0;
+  font-size: 1.2rem;
+}
 
-    .game-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-      padding: 30px;
-    }
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding: 20px;
+}
 
-    .game-card {
-      position: relative;
-      width: 90%; 
-      max-width: 1200px; 
-      border-radius: 12px;
-      overflow: hidden;
-      background: #111;
-      box-shadow: 0px 4px 20px rgba(0,0,0,0.6);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+.game-card {
+  position: relative;
+  width: 90%;
+  max-width: 1200px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #111;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-    .game-card:hover {
-      transform: scale(1.02);
-      box-shadow: 0px 8px 25px rgba(0,0,0,0.9);
-    }
+.game-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.9);
+}
 
-    iframe {
-      width: 100%;
-      height: 800px; 
-      border: none;
-      pointer-events: none; /* bloqueia o clique direto */
-    }
+iframe {
+  width: 100%;
+  height: 800px;
+  border: none;
+  pointer-events: none; /* impede clique direto */
+}
 
-    .fullscreen-btn {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      padding: 15px 30px;
-      background: #ff4500;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 1.2rem;
-      z-index: 10;
-      transition: background 0.3s ease;
-    }
+.fullscreen-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 15px 30px;
+  background: #ff4500;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  z-index: 10;
+  transition: background 0.3s ease;
+}
 
-    .fullscreen-btn:hover {
-      background: #ff6347;
-    }
-  </style>
+.fullscreen-btn:hover {
+  background: #ff6347;
+}
+
+.ad-top, .ad-bottom {
+  margin: 20px 0;
+}
+</style>
 </head>
 <body>
-  <h1>🎮 Portal de Jogos FPS</h1>
-  <p>Clique no botão abaixo para jogar em tela cheia!</p>
 
-  <div class="game-container">
-    <!-- Jogo principal -->
-    <div class="game-card">
-      <iframe id="game1" src="https://funhtml5games.com?embed=shoot" allowfullscreen></iframe>
-      <button class="fullscreen-btn" onclick="openFullscreen('game1')">Jogar em Tela Cheia</button>
-    </div>
+<h1>🎮 Portal de Jogos FPS</h1>
+<p>Clique no botão abaixo para jogar em tela cheia!</p>
+
+<!-- Anúncio no topo -->
+<div class="ad-top">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1241009751506011"
+       data-ad-slot="1234567890"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<div class="game-container">
+  <!-- Jogo principal -->
+  <div class="game-card">
+    <iframe id="game1" src="https://funhtml5games.com?embed=shoot" allowfullscreen></iframe>
+    <button class="fullscreen-btn" onclick="openFullscreen('game1')">Jogar em Tela Cheia</button>
   </div>
+</div>
 
-  <script>
-    // Função para abrir em tela cheia
-    function openFullscreen(id) {
-      let elem = document.getElementById(id);
-      // Habilita pointer events quando entrar em fullscreen
-      elem.style.pointerEvents = "auto";
+<!-- Anúncio abaixo do jogo -->
+<div class="ad-bottom">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1241009751506011"
+       data-ad-slot="1234567891"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
 
-      if (elem.requestFullscreen) {
-        elem.requestFullscreen();
-      } else if (elem.mozRequestFullScreen) {
-        elem.mozRequestFullScreen();
-      } else if (elem.webkitRequestFullscreen) {
-        elem.webkitRequestFullscreen();
-      } else if (elem.msRequestFullscreen) {
-        elem.msRequestFullscreen();
-      }
+<script>
+// Inicializa anúncios
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+// Fullscreen
+function openFullscreen(id) {
+  let elem = document.getElementById(id);
+  elem.style.pointerEvents = "auto"; // libera teclado/mouse em fullscreen
+
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.mozRequestFullScreen) {
+    elem.mozRequestFullScreen();
+  } else if (elem.webkitRequestFullscreen) {
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) {
+    elem.msRequestFullscreen();
+  }
+}
+
+// Sair do fullscreen com F11
+document.addEventListener("keydown", function(e) {
+  if (e.key === "F11") {
+    e.preventDefault();
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
     }
+  }
+});
 
-    // Sair da tela cheia com F11
-    document.addEventListener("keydown", function(e) {
-      if (e.key === "F11") {
-        e.preventDefault();
-        if (document.fullscreenElement) {
-          document.exitFullscreen();
-        }
-      }
-    });
+// Bloqueia clique fora do fullscreen
+document.addEventListener("fullscreenchange", () => {
+  const iframe = document.getElementById('game1');
+  if (!document.fullscreenElement) {
+    iframe.style.pointerEvents = "none";
+  }
+});
+</script>
 
-    // Desativa pointer events novamente quando sair do fullscreen
-    document.addEventListener("fullscreenchange", () => {
-      const iframe = document.getElementById('game1');
-      if (!document.fullscreenElement) {
-        iframe.style.pointerEvents = "none";
-      }
-    });
-  </script>
 </body>
 </html>
