@@ -239,11 +239,11 @@ iframe {
 
   <!-- Destaques de outros jogos -->
   <div class="featured-games">
-    <div class="featured-game">FPS Shoot</div>
-    <div class="featured-game">Aventura Épica</div>
-    <div class="featured-game">Estratégia Tática</div>
-    <div class="featured-game">Corrida Radical</div>
-    <div class="featured-game">Puzzle Desafiante</div>
+    <div class="featured-game" data-src="https://funhtml5games.com?embed=shoot" data-desc="FPS Shoot é um jogo de tiro em primeira pessoa. Use W A S D ou as setas para se mover e clique para atirar.">FPS Shoot</div>
+    <div class="featured-game" data-src="https://funhtml5games.com?embed=adventure" data-desc="Aventura Épica: explore mundos incríveis e complete missões emocionantes!">Aventura Épica</div>
+    <div class="featured-game" data-src="https://funhtml5games.com?embed=strategy" data-desc="Estratégia Tática: planeje seus movimentos e derrote seus inimigos!">Estratégia Tática</div>
+    <div class="featured-game" data-src="https://funhtml5games.com?embed=racing" data-desc="Corrida Radical: acelere e supere todos os desafios!">Corrida Radical</div>
+    <div class="featured-game" data-src="https://funhtml5games.com?embed=puzzle" data-desc="Puzzle Desafiante: teste sua lógica e habilidade!">Puzzle Desafiante</div>
   </div>
 
   <!-- Banner inferior -->
@@ -277,6 +277,17 @@ document.addEventListener('keydown', function(e){
   if(e.key === "Escape" || e.key === "Esc"){
     if(document.fullscreenElement) document.exitFullscreen();
   }
+});
+
+// Atualiza iframe e descrição ao clicar nos destaques
+const featuredGames = document.querySelectorAll('.featured-game');
+featuredGames.forEach(game => {
+  game.addEventListener('click', () => {
+    const iframe = document.getElementById('game1');
+    iframe.src = game.getAttribute('data-src');
+    document.getElementById('game-description').textContent = game.getAttribute('data-desc');
+    window.scrollTo({ top: iframe.offsetTop - 20, behavior: 'smooth' });
+  });
 });
 </script>
 
