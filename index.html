@@ -42,7 +42,8 @@
 
     .game-card {
       position: relative;
-      width: 500px;
+      width: 90%; /* aumentei para ocupar quase toda a largura */
+      max-width: 1200px; /* limite máximo de largura */
       border-radius: 12px;
       overflow: hidden;
       background: #111;
@@ -51,62 +52,35 @@
     }
 
     .game-card:hover {
-      transform: scale(1.05);
+      transform: scale(1.02);
       box-shadow: 0px 8px 25px rgba(0,0,0,0.9);
     }
 
     iframe {
       width: 100%;
-      height: 320px;
+      height: 800px; /* aumentei a altura para tela maior */
       border: none;
       display: block;
-    }
-
-    .fullscreen-btn {
-      position: absolute;
-      bottom: 10px;
-      right: 10px;
-      padding: 8px 15px;
-      background: #ff4500;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      transition: background 0.3s ease;
-    }
-
-    .fullscreen-btn:hover {
-      background: #ff6347;
     }
   </style>
 </head>
 <body>
   <h1>🎮 Portal de Jogos FPS</h1>
-  <p>Clique em qualquer jogo abaixo e divirta-se!</p>
+  <p>Clique no jogo abaixo e divirta-se!</p>
 
   <div class="game-container">
-    <!-- Jogo 1 -->
+    <!-- Jogo principal -->
     <div class="game-card">
       <iframe id="game1" src="https://funhtml5games.com?embed=shoot" allowfullscreen></iframe>
-      <button class="fullscreen-btn" onclick="openFullscreen('game1')">Tela Cheia</button>
     </div>
   </div>
 
   <script>
-    // Função para abrir em tela cheia
-    function openFullscreen(id) {
-      let elem = document.getElementById(id);
-      if (elem.requestFullscreen) {
-        elem.requestFullscreen();
-      } else if (elem.mozRequestFullScreen) { // Firefox
-        elem.mozRequestFullScreen();
-      } else if (elem.webkitRequestFullscreen) { // Chrome, Safari e Opera
-        elem.webkitRequestFullscreen();
-      } else if (elem.msRequestFullscreen) { // IE/Edge
-        elem.msRequestFullscreen();
-      }
-    }
+    // Focar no iframe para permitir que teclado funcione
+    const iframe = document.getElementById('game1');
+    iframe.addEventListener('load', () => {
+      iframe.contentWindow.focus();
+    });
 
     // Sair da tela cheia com F11
     document.addEventListener("keydown", function(e) {
