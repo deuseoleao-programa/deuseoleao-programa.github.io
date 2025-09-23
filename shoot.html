@@ -19,14 +19,12 @@ let bullets = [];
 let enemies = [];
 let score = 0;
 
-// Cria inimigos
 function spawnEnemy() {
   const x = Math.random() * (canvas.width - 40);
   enemies.push({ x: x, y: 0, w: 40, h: 40 });
 }
 setInterval(spawnEnemy, 1000);
 
-// Controle do jogador
 document.addEventListener('keydown', e => {
   if(e.key === 'ArrowLeft') player.dx=-5;
   if(e.key === 'ArrowRight') player.dx=5;
@@ -36,7 +34,6 @@ document.addEventListener('keyup', e => {
   if(e.key==='ArrowLeft'||e.key==='ArrowRight') player.dx=0;
 });
 
-// Atualização do jogo
 function update() {
   player.x += player.dx;
   if(player.x<0) player.x=0;
@@ -59,7 +56,6 @@ function update() {
   requestAnimationFrame(update);
 }
 
-// Desenhar
 function draw(){
   ctx.fillStyle="#222";
   ctx.fillRect(0,0,canvas.width,canvas.height);
