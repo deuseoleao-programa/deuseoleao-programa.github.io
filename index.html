@@ -42,8 +42,8 @@
 
     .game-card {
       position: relative;
-      width: 90%; /* aumentei para ocupar quase toda a largura */
-      max-width: 1200px; /* limite máximo de largura */
+      width: 90%; 
+      max-width: 1200px; 
       border-radius: 12px;
       overflow: hidden;
       background: #111;
@@ -58,37 +58,77 @@
 
     iframe {
       width: 100%;
-      height: 800px; /* aumentei a altura para tela maior */
+      height: 800px; 
       border: none;
-      display: block;
+      pointer-events: none; /* bloqueia o clique direto */
+    }
+
+    .fullscreen-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 15px 30px;
+      background: #ff4500;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      z-index: 10;
+      transition: background 0.3s ease;
+    }
+
+    .fullscreen-btn:hover {
+      background: #ff6347;
     }
   </style>
 </head>
 <body>
   <h1>🎮 Portal de Jogos FPS</h1>
-  <p>Clique no jogo abaixo e divirta-se!</p>
+  <p>Clique no botão abaixo para jogar em tela cheia!</p>
 
   <div class="game-container">
     <!-- Jogo principal -->
     <div class="game-card">
       <iframe id="game1" src="https://funhtml5games.com?embed=shoot" allowfullscreen></iframe>
+      <button class="fullscreen-btn" onclick="openFullscreen('game1')">Jogar em Tela Cheia</button>
     </div>
   </div>
 
   <script>
-    // Focar no iframe para permitir que teclado funcione
-    const iframe = document.getElementById('game1');
-    iframe.addEventListener('load', () => {
-      iframe.contentWindow.focus();
-    });
+    // Função para abrir em tela cheia
+    function openFullscreen(id) {
+      let elem = document.getElementById(id);
+      // Habilita pointer events quando entrar em fullscreen
+      elem.style.pointerEvents = "auto";
+
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.mozRequestFullScreen) {
+        elem.mozRequestFullScreen();
+      } else if (elem.webkitRequestFullscreen) {
+        elem.webkitRequestFullscreen();
+      } else if (elem.msRequestFullscreen) {
+        elem.msRequestFullscreen();
+      }
+    }
 
     // Sair da tela cheia com F11
     document.addEventListener("keydown", function(e) {
       if (e.key === "F11") {
-        e.preventDefault(); // impede o fullscreen padrão do navegador
+        e.preventDefault();
         if (document.fullscreenElement) {
           document.exitFullscreen();
         }
+      }
+    });
+
+    // Desativa pointer events novamente quando sair do fullscreen
+    document.addEventListener("fullscreenchange", () => {
+      const iframe = document.getElementById('game1');
+      if (!document.fullscreenElement) {
+        iframe.style.pointerEvents = "none";
       }
     });
   </script>
