@@ -92,32 +92,34 @@ header h1 {
 
 iframe {
   width: 100%;
-  height: 100%; /* ocupar 100% do card */
+  height: 100%;
   border: none;
   border-radius: 8px;
   pointer-events: auto;
   transition: transform 0.3s;
 }
 
+/* Botão flutuante */
 .fullscreen-btn {
-  position: absolute;
-  bottom: 15px;
-  right: 15px;
+  position: fixed; /* agora flutuante */
+  bottom: 20px;
+  right: 20px;
   padding: 12px 25px;
   background: #ff4500;
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 50px;
   cursor: pointer;
   font-size: 1rem;
   font-weight: bold;
   box-shadow: 0 4px 15px rgba(0,0,0,0.5);
   transition: 0.3s;
+  z-index: 999;
 }
 
 .fullscreen-btn:hover {
   background: #ff6347;
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 
 /* Descrição do jogo */
@@ -174,7 +176,6 @@ iframe {
   <!-- Jogo principal -->
   <div class="game-card">
     <iframe id="game1" data-src="https://funhtml5games.com?embed=shoot" allowfullscreen loading="lazy"></iframe>
-    <button class="fullscreen-btn" onclick="openFullscreen('game1')">Tela Cheia</button>
   </div>
 
   <div class="game-description" id="game-description">
@@ -193,6 +194,9 @@ iframe {
   </div>
 </div>
 
+<!-- Botão flutuante -->
+<button class="fullscreen-btn" onclick="openFullscreen('game1')">Tela Cheia</button>
+
 <script>
 function openFullscreen(id){
   const elem=document.getElementById(id);
@@ -204,7 +208,7 @@ function openFullscreen(id){
   else if(elem.msRequestFullscreen){ elem.msRequestFullscreen(); }
 }
 
-// ESC sai do fullscreen do iframe do site
+// ESC sai do fullscreen
 document.addEventListener('keydown', function(e){
   if(e.key === "Escape" || e.key === "Esc"){
     if(document.fullscreenElement) document.exitFullscreen();
