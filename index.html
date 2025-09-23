@@ -16,7 +16,7 @@ body {
   color: white;
   margin: 0;
   padding: 0;
-  text-align: center;
+  overflow-x: hidden;
 }
 
 h1 {
@@ -25,35 +25,40 @@ h1 {
   margin: 0;
   font-size: 2.5rem;
   box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  text-align: center;
 }
 
 p {
-  margin: 15px 0;
+  margin: 10px 0 20px 0;
   font-size: 1.2rem;
+  text-align: center;
 }
 
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Game card */
 .game-container {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
-  padding: 20px;
+  gap: 20px;
 }
 
 .game-card {
   position: relative;
-  width: 90%;
+  width: 100%;
   max-width: 1200px;
   border-radius: 12px;
   overflow: hidden;
   background: #111;
   box-shadow: 0 4px 20px rgba(0,0,0,0.6);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.game-card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.9);
 }
 
 iframe {
@@ -83,8 +88,32 @@ iframe {
   background: #ff6347;
 }
 
-.ad-top, .ad-bottom {
-  margin: 20px 0;
+/* Sidebar */
+.sidebar {
+  width: 300px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: sticky;
+  top: 20px;
+  height: fit-content;
+}
+
+.ad-top, .ad-bottom, .ad-sidebar {
+  background: #111;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Anúncio de teste */
+.test-ad {
+  background: #ccc;
+  color: #000;
+  font-size: 16px;
+  line-height: 50px;
+  margin: 10px 0;
 }
 </style>
 </head>
@@ -93,47 +122,61 @@ iframe {
 <h1>🎮 Portal de Jogos FPS</h1>
 <p>Clique no botão abaixo para jogar em tela cheia!</p>
 
-<!-- Anúncio original do AdSense no topo -->
-<div class="ad-top">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-1241009751506011"
-       data-ad-slot="1234567890"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
+<div class="container">
+  <div class="game-container">
+    <!-- Banner fixo no topo do jogo -->
+    <div class="ad-top">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-1241009751506011"
+           data-ad-slot="1234567890"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
 
-  <!-- Anúncio de teste visível imediatamente -->
-  <div style="margin:20px auto; text-align:center; background:#ccc; color:#000; line-height:50px; font-size:16px;">
-    Anúncio de Teste do AdSense
+      <!-- Test ad -->
+      <div class="test-ad">AdSense Test Ad</div>
+    </div>
+
+    <!-- Jogo -->
+    <div class="game-card">
+      <iframe id="game1" src="https://funhtml5games.com?embed=shoot" allowfullscreen></iframe>
+      <button class="fullscreen-btn" onclick="openFullscreen('game1')">Jogar em Tela Cheia</button>
+    </div>
+
+    <!-- Banner abaixo do jogo -->
+    <div class="ad-bottom">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-1241009751506011"
+           data-ad-slot="1234567891"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+
+      <!-- Test ad -->
+      <div class="test-ad">AdSense Test Ad</div>
+    </div>
   </div>
-</div>
 
-<div class="game-container">
-  <!-- Jogo principal -->
-  <div class="game-card">
-    <iframe id="game1" src="https://funhtml5games.com?embed=shoot" allowfullscreen></iframe>
-    <button class="fullscreen-btn" onclick="openFullscreen('game1')">Jogar em Tela Cheia</button>
-  </div>
-</div>
-
-<!-- Anúncio original do AdSense abaixo do jogo -->
-<div class="ad-bottom">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-1241009751506011"
-       data-ad-slot="1234567891"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-
-  <!-- Anúncio de teste visível imediatamente -->
-  <div style="margin:20px auto; text-align:center; background:#ccc; color:#000; line-height:50px; font-size:16px;">
-    Anúncio de Teste do AdSense
+  <!-- Barra lateral -->
+  <div class="sidebar">
+    <div class="ad-sidebar">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-1241009751506011"
+           data-ad-slot="1234567892"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+      <div class="test-ad">AdSense Test Ad</div>
+    </div>
   </div>
 </div>
 
