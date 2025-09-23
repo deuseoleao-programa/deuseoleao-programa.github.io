@@ -1,197 +1,97 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portal de Jogos FPS</title>
-
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1241009751506011" crossorigin="anonymous"></script>
-
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #111;
-      color: #fff;
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      background: #222;
-      padding: 15px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 2rem;
-    }
-
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin-left: 15px;
-      padding: 6px 12px;
-      border-radius: 5px;
-      background: #333;
-      transition: 0.3s;
-    }
-
-    nav a:hover {
-      background: #ff4500;
-    }
-
-    .intro {
-      text-align: center;
-      margin: 30px 10px;
-    }
-
-    .categories {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 20px;
-    }
-
-    .categories div {
-      padding: 10px 20px;
-      background: #333;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .categories div:hover {
-      background: #ff4500;
-    }
-
-    .games-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-      padding: 20px;
-    }
-
-    .game-card {
-      background: #222;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.6);
-      transition: transform 0.3s, box-shadow 0.3s;
-      position: relative;
-    }
-
-    .game-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.9);
-    }
-
-    .game-card iframe {
-      width: 100%;
-      height: 250px;
-      border: none;
-    }
-
-    .fullscreen-btn {
-      position: absolute;
-      bottom: 10px;
-      right: 10px;
-      background: #ff4500;
-      border: none;
-      color: #fff;
-      padding: 6px 12px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .fullscreen-btn:hover {
-      background: #ff6347;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal de Jogos FPS</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1241009751506011" crossorigin="anonymous"></script>
+<style>
+body { font-family: Arial, sans-serif; background:#111; color:#fff; margin:0; padding:0; }
+header { background:#222; padding:15px 30px; display:flex; justify-content:space-between; flex-wrap:wrap; box-shadow:0 4px 10px rgba(0,0,0,0.5);}
+header h1 { margin:0; font-size:2rem; }
+nav a { color:#fff; text-decoration:none; margin-left:15px; padding:6px 12px; border-radius:5px; background:#333; transition:0.3s;}
+nav a:hover { background:#ff4500; }
+.intro { text-align:center; margin:30px 10px; }
+.categories { display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin-bottom:20px; }
+.categories div { padding:10px 20px; background:#333; border-radius:8px; cursor:pointer; transition:0.3s; }
+.categories div:hover { background:#ff4500; }
+.games-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px; padding:20px; }
+.game-card { background:#222; border-radius:10px; overflow:hidden; box-shadow:0 4px 15px rgba(0,0,0,0.6); transition:transform 0.3s,box-shadow 0.3s; position:relative; }
+.game-card:hover { transform:scale(1.05); box-shadow:0 8px 25px rgba(0,0,0,0.9); }
+.game-card iframe { width:100%; height:320px; border:none; }
+.fullscreen-btn { position:absolute; bottom:10px; right:10px; background:#ff4500; border:none; color:#fff; padding:6px 12px; border-radius:5px; cursor:pointer; }
+.fullscreen-btn:hover { background:#ff6347; }
+</style>
 </head>
 <body>
 
-  <header>
-    <h1>🎮 Portal de Jogos FPS</h1>
-    <nav>
-      <a href="#acao">Ação</a>
-      <a href="#tiros">Tiros</a>
-      <a href="#aventura">Aventura</a>
-      <a href="#estrategia">Estratégia</a>
-      <a href="#todos">Todos</a>
-    </nav>
-  </header>
+<header>
+<h1>🎮 Portal de Jogos FPS</h1>
+<nav>
+<a href="#acao">Ação</a>
+<a href="#tiros">Tiros</a>
+<a href="#aventura">Aventura</a>
+<a href="#estrategia">Estratégia</a>
+<a href="#todos">Todos</a>
+</nav>
+</header>
 
-  <div class="intro">
-    <h2>Bem-vindo ao Portal de Jogos FPS!</h2>
-    <p>Escolha sua categoria e divirta-se com os melhores jogos online.</p>
-  </div>
+<div class="intro">
+<h2>Bem-vindo ao Portal de Jogos FPS!</h2>
+<p>Escolha sua categoria e divirta-se com os melhores jogos online.</p>
+</div>
 
-  <div class="categories">
-    <div onclick="filterGames('acao')">Ação</div>
-    <div onclick="filterGames('tiros')">Tiros</div>
-    <div onclick="filterGames('aventura')">Aventura</div>
-    <div onclick="filterGames('estrategia')">Estratégia</div>
-    <div onclick="filterGames('todos')">Todos</div>
-  </div>
+<div class="categories">
+<div onclick="filterGames('acao')">Ação</div>
+<div onclick="filterGames('tiros')">Tiros</div>
+<div onclick="filterGames('aventura')">Aventura</div>
+<div onclick="filterGames('estrategia')">Estratégia</div>
+<div onclick="filterGames('todos')">Todos</div>
+</div>
 
-  <div class="games-grid">
-    <!-- Jogo Ação -->
-    <div class="game-card acao">
-      <iframe id="game1" src="shoot.html" allowfullscreen></iframe>
-      <button class="fullscreen-btn" onclick="openFullscreen('game1')">Tela Cheia</button>
-    </div>
+<div class="games-grid">
+<!-- Jogo Ação -->
+<div class="game-card acao">
+<iframe id="game1" src="https://funhtml5games.com?embed=shoot" allowfullscreen></iframe>
+<button class="fullscreen-btn" onclick="openFullscreen('game1')">Tela Cheia</button>
+</div>
 
-    <!-- Jogo Tiros -->
-    <div class="game-card tiros">
-      <iframe id="game2" src="gun.html" allowfullscreen></iframe>
-      <button class="fullscreen-btn" onclick="openFullscreen('game2')">Tela Cheia</button>
-    </div>
+<!-- Jogo Tiros -->
+<div class="game-card tiros">
+<iframe id="game2" src="https://funhtml5games.com?embed=gun" allowfullscreen></iframe>
+<button class="fullscreen-btn" onclick="openFullscreen('game2')">Tela Cheia</button>
+</div>
 
-    <!-- Jogo Aventura -->
-    <div class="game-card aventura">
-      <iframe id="game3" src="adventure.html" allowfullscreen></iframe>
-      <button class="fullscreen-btn" onclick="openFullscreen('game3')">Tela Cheia</button>
-    </div>
+<!-- Jogo Aventura -->
+<div class="game-card aventura">
+<iframe id="game3" src="https://funhtml5games.com?embed=adventure" allowfullscreen></iframe>
+<button class="fullscreen-btn" onclick="openFullscreen('game3')">Tela Cheia</button>
+</div>
 
-    <!-- Jogo Estratégia -->
-    <div class="game-card estrategia">
-      <iframe id="game4" src="strategy.html" allowfullscreen></iframe>
-      <button class="fullscreen-btn" onclick="openFullscreen('game4')">Tela Cheia</button>
-    </div>
-  </div>
+<!-- Jogo Estratégia -->
+<div class="game-card estrategia">
+<iframe id="game4" src="https://funhtml5games.com?embed=strategy" allowfullscreen></iframe>
+<button class="fullscreen-btn" onclick="openFullscreen('game4')">Tela Cheia</button>
+</div>
+</div>
 
-  <script>
-    function openFullscreen(id) {
-      const elem = document.getElementById(id);
-      if (elem.requestFullscreen) {
-        elem.requestFullscreen();
-      } else if (elem.mozRequestFullScreen) {
-        elem.mozRequestFullScreen();
-      } else if (elem.webkitRequestFullscreen) {
-        elem.webkitRequestFullscreen();
-      } else if (elem.msRequestFullscreen) {
-        elem.msRequestFullscreen();
-      }
-    }
+<script>
+function openFullscreen(id) {
+  const elem=document.getElementById(id);
+  if(elem.requestFullscreen){elem.requestFullscreen();}
+  else if(elem.mozRequestFullScreen){elem.mozRequestFullScreen();}
+  else if(elem.webkitRequestFullscreen){elem.webkitRequestFullscreen();}
+  else if(elem.msRequestFullscreen){elem.msRequestFullscreen();}
+}
 
-    function filterGames(category) {
-      const games = document.querySelectorAll('.game-card');
-      games.forEach(game => {
-        if(category === 'todos') {
-          game.style.display = 'block';
-        } else {
-          game.style.display = game.classList.contains(category) ? 'block' : 'none';
-        }
-      });
-    }
-  </script>
+function filterGames(category){
+  const games=document.querySelectorAll('.game-card');
+  games.forEach(game=>{
+    if(category==='todos'){game.style.display='block';}
+    else{game.style.display=game.classList.contains(category)?'block':'none';}
+  });
+}
+</script>
 
 </body>
 </html>
