@@ -200,10 +200,19 @@ function openFullscreen(id){
   else if(elem.msRequestFullscreen){ elem.msRequestFullscreen(); }
 }
 
-document.addEventListener("keydown", function(e){
-  if(e.key==="F11"){ e.preventDefault(); if(document.fullscreenElement) document.exitFullscreen(); }
+// Fullscreen automático ao carregar o jogo
+window.addEventListener('load', () => {
+  openFullscreen('game1');
 });
 
+// Sair do fullscreen com ESC
+document.addEventListener('keydown', function(e){
+  if(e.key === "Escape" || e.key === "Esc"){
+    if(document.fullscreenElement) document.exitFullscreen();
+  }
+});
+
+// Bloqueia clique fora do fullscreen
 document.addEventListener("fullscreenchange", ()=>{
   const iframe=document.getElementById('game1');
   if(!document.fullscreenElement){ iframe.style.pointerEvents="none"; }
