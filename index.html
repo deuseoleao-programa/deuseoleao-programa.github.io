@@ -230,7 +230,7 @@ iframe {
 
   <!-- Jogo principal -->
   <div class="game-card">
-    <iframe id="game1" data-src="https://funhtml5games.com?embed=shoot" allowfullscreen loading="lazy"></iframe>
+    <iframe id="game1" src="https://funhtml5games.com?embed=shoot" allowfullscreen loading="lazy"></iframe>
   </div>
 
   <div class="game-description" id="game-description">
@@ -284,9 +284,18 @@ const featuredGames = document.querySelectorAll('.featured-game');
 featuredGames.forEach(game => {
   game.addEventListener('click', () => {
     const iframe = document.getElementById('game1');
-    iframe.src = game.getAttribute('data-src');
-    document.getElementById('game-description').textContent = game.getAttribute('data-desc');
-    window.scrollTo({ top: iframe.offsetTop - 20, behavior: 'smooth' });
+    const newSrc = game.getAttribute('data-src');
+    const newDesc = game.getAttribute('data-desc');
+
+    // Tenta carregar no iframe
+    try {
+      iframe.src = newSrc;
+      document.getElementById('game-description').textContent = newDesc;
+      window.scrollTo({ top: iframe.offsetTop - 20, behavior: 'smooth' });
+    } catch (e) {
+      // Se não funcionar, abre em nova aba
+      window.open(newSrc, '_blank');
+    }
   });
 });
 </script>
