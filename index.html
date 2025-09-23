@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Portal de Jogos FPS</title>
-
+<meta name="description" content="Portal de Jogos FPS: jogue online grátis FPS, aventura e estratégia diretamente no navegador.">
 <!-- AdSense Original -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1241009751506011"
 crossorigin="anonymous"></script>
@@ -32,6 +32,26 @@ p {
   margin: 10px 0 20px 0;
   font-size: 1.2rem;
   text-align: center;
+}
+
+/* Navegação */
+.navbar {
+  display: flex;
+  justify-content: center;
+  background: #111;
+  padding: 10px;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 5px 10px;
+}
+.navbar a:hover {
+  background: #333;
+  border-radius: 5px;
 }
 
 .container {
@@ -109,15 +129,6 @@ iframe {
   text-align: center;
 }
 
-/* Anúncio de teste */
-.test-ad {
-  background: #ccc;
-  color: #000;
-  font-size: 16px;
-  line-height: 50px;
-  margin: 10px 0;
-}
-
 /* Jogos adicionais */
 .games-list {
   display: flex;
@@ -143,6 +154,14 @@ iframe {
   background: #333;
 }
 
+/* Descrição do jogo */
+.game-description {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1rem;
+  color: #ccc;
+}
+
 /* Responsividade */
 @media(max-width: 1000px){
   .container { flex-direction: column; align-items: center; }
@@ -158,6 +177,14 @@ iframe {
 <body>
 
 <h1>🎮 Portal de Jogos FPS</h1>
+
+<!-- Navegação -->
+<div class="navbar">
+  <a href="index.html">Início</a>
+  <a href="sobre.html">Sobre</a>
+  <a href="privacidade.html">Política de Privacidade</a>
+</div>
+
 <p>Use W A S D ou as setas para jogar. Clique no botão abaixo para fullscreen!</p>
 
 <div class="container">
@@ -173,14 +200,17 @@ iframe {
       <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
       </script>
-
-      <div class="test-ad">AdSense Test Ad</div>
     </div>
 
     <!-- Jogo principal -->
     <div class="game-card">
       <iframe id="game1" data-src="https://funhtml5games.com?embed=shoot" allowfullscreen loading="lazy"></iframe>
       <button class="fullscreen-btn" onclick="openFullscreen('game1')">Jogar em Tela Cheia</button>
+    </div>
+
+    <!-- Descrição do jogo -->
+    <div class="game-description">
+      FPS Shoot é um jogo de tiro em primeira pessoa. Use W A S D ou as setas para se mover e clique para atirar.
     </div>
 
     <!-- Banner abaixo do jogo -->
@@ -194,7 +224,6 @@ iframe {
       <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
       </script>
-      <div class="test-ad">AdSense Test Ad</div>
     </div>
 
     <!-- Jogos adicionais -->
@@ -218,7 +247,6 @@ iframe {
       <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
       </script>
-      <div class="test-ad">AdSense Test Ad</div>
     </div>
   </div>
 </div>
