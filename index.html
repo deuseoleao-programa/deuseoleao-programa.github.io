@@ -16,60 +16,20 @@
       color: white;
       margin: 0;
       padding: 0;
+      text-align: center;
     }
 
-    header {
+    h1 {
       background: #222;
       padding: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-
-    header h1 {
       margin: 0;
-      font-size: 2rem;
+      font-size: 2.5rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
     }
 
-    nav {
-      display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      padding: 8px 15px;
-      background: #333;
-      border-radius: 6px;
-      transition: background 0.3s;
-    }
-
-    nav a:hover {
-      background: #ff4500;
-    }
-
-    .category-container {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin: 20px 0;
-      flex-wrap: wrap;
-    }
-
-    .category {
-      background: #333;
-      padding: 10px 20px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .category:hover {
-      background: #ff4500;
+    p {
+      margin: 15px 0;
+      font-size: 1.2rem;
     }
 
     .game-container {
@@ -77,7 +37,7 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 30px;
-      padding: 20px;
+      padding: 30px;
     }
 
     .game-card {
@@ -119,51 +79,17 @@
     .fullscreen-btn:hover {
       background: #ff6347;
     }
-
   </style>
 </head>
 <body>
+  <h1>🎮 Portal de Jogos FPS</h1>
+  <p>Clique em qualquer jogo abaixo e divirta-se!</p>
 
-  <!-- Header com Menu -->
-  <header>
-    <h1>🎮 Portal de Jogos FPS</h1>
-    <nav>
-      <a href="#acao">Ação</a>
-      <a href="#tiros">Tiros</a>
-      <a href="#aventura">Aventura</a>
-      <a href="#estrategia">Estratégia</a>
-    </nav>
-  </header>
-
-  <p style="text-align:center; margin: 20px 0; font-size:1.2rem;">Clique em qualquer jogo abaixo e divirta-se!</p>
-
-  <!-- Categorias -->
-  <div class="category-container">
-    <div class="category" onclick="filterGames('acao')">Ação</div>
-    <div class="category" onclick="filterGames('tiros')">Tiros</div>
-    <div class="category" onclick="filterGames('aventura')">Aventura</div>
-    <div class="category" onclick="filterGames('estrategia')">Estratégia</div>
-    <div class="category" onclick="filterGames('todos')">Todos</div>
-  </div>
-
-  <!-- Jogos -->
   <div class="game-container">
     <!-- Jogo 1 -->
-    <div class="game-card acao" id="game-card1">
+    <div class="game-card">
       <iframe id="game1" src="https://funhtml5games.com?embed=shoot" allowfullscreen></iframe>
       <button class="fullscreen-btn" onclick="openFullscreen('game1')">Tela Cheia</button>
-    </div>
-
-    <!-- Jogo 2 (Exemplo Adicional) -->
-    <div class="game-card tiros" id="game-card2">
-      <iframe id="game2" src="https://funhtml5games.com?embed=gun" allowfullscreen></iframe>
-      <button class="fullscreen-btn" onclick="openFullscreen('game2')">Tela Cheia</button>
-    </div>
-
-    <!-- Jogo 3 (Exemplo Adicional) -->
-    <div class="game-card aventura" id="game-card3">
-      <iframe id="game3" src="https://funhtml5games.com?embed=adventure" allowfullscreen></iframe>
-      <button class="fullscreen-btn" onclick="openFullscreen('game3')">Tela Cheia</button>
     </div>
   </div>
 
@@ -185,25 +111,12 @@
     // Sair da tela cheia com F11
     document.addEventListener("keydown", function(e) {
       if (e.key === "F11") {
-        e.preventDefault();
+        e.preventDefault(); // impede o fullscreen padrão do navegador
         if (document.fullscreenElement) {
           document.exitFullscreen();
         }
       }
     });
-
-    // Filtrar jogos por categoria
-    function filterGames(category) {
-      const games = document.querySelectorAll('.game-card');
-      games.forEach(game => {
-        if (category === 'todos') {
-          game.style.display = 'block';
-        } else {
-          game.style.display = game.classList.contains(category) ? 'block' : 'none';
-        }
-      });
-    }
   </script>
-
 </body>
 </html>
