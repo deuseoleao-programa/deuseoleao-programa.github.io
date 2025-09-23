@@ -9,7 +9,6 @@
 crossorigin="anonymous"></script>
 
 <style>
-/* Reset básico */
 * { box-sizing: border-box; margin:0; padding:0; }
 
 body {
@@ -27,6 +26,7 @@ header {
   background: #1b1b1b;
   padding: 20px 10px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  z-index: 10;
 }
 
 header h1 {
@@ -70,7 +70,7 @@ header h1 {
 }
 
 /* Anúncios */
-.ad-top, .ad-bottom, .ad-sidebar {
+.ad-top, .ad-bottom {
   background: #111;
   border-radius: 10px;
   padding: 15px;
@@ -80,6 +80,8 @@ header h1 {
 /* Card do jogo */
 .game-card {
   position: relative;
+  width: 100%;
+  height: calc(100vh - 200px); /* altura total do jogo visível */
   max-width: 1200px;
   margin: 0 auto;
   border-radius: 12px;
@@ -90,10 +92,10 @@ header h1 {
 
 iframe {
   width: 100%;
-  height: 800px;
+  height: 100%; /* ocupar 100% do card */
   border: none;
   border-radius: 8px;
-  pointer-events: none;
+  pointer-events: auto;
   transition: transform 0.3s;
 }
 
@@ -121,7 +123,7 @@ iframe {
 /* Descrição do jogo */
 .game-description {
   text-align: center;
-  margin-top: 15px;
+  margin-top: 10px;
   font-size: 1.1rem;
   color: #ccc;
   max-width: 800px;
@@ -132,13 +134,15 @@ iframe {
 
 /* Responsividade */
 @media(max-width: 900px){
-  iframe { height: 500px; }
+  .game-card { height: 60vh; }
+  iframe { height: 100%; }
   .fullscreen-btn { padding: 10px 20px; font-size: 0.9rem; }
   header h1 { font-size: 1.8rem; }
 }
 
 @media(max-width: 600px){
-  iframe { height: 400px; }
+  .game-card { height: 50vh; }
+  iframe { height: 100%; }
   .fullscreen-btn { padding: 8px 15px; font-size: 0.8rem; }
   header h1 { font-size: 1.5rem; }
 }
@@ -200,22 +204,11 @@ function openFullscreen(id){
   else if(elem.msRequestFullscreen){ elem.msRequestFullscreen(); }
 }
 
-// Fullscreen automático ao carregar o jogo
-window.addEventListener('load', () => {
-  openFullscreen('game1');
-});
-
-// Sair do fullscreen com ESC
+// ESC sai do fullscreen do iframe do site
 document.addEventListener('keydown', function(e){
   if(e.key === "Escape" || e.key === "Esc"){
     if(document.fullscreenElement) document.exitFullscreen();
   }
-});
-
-// Bloqueia clique fora do fullscreen
-document.addEventListener("fullscreenchange", ()=>{
-  const iframe=document.getElementById('game1');
-  if(!document.fullscreenElement){ iframe.style.pointerEvents="none"; }
 });
 </script>
 
