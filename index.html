@@ -269,7 +269,7 @@ footer a:hover { text-decoration: underline; }
 
   <div class="hero-banner">
     🔥 Bem-vindo ao Portal de Jogos FPS! Explore, jogue e divirta-se com os melhores jogos online grátis! 🎮
-    <span id="online-counter">👥 Jogadores online agora: ...</span>
+    <span id="online-counter">👥 Jogadores online agora: 0</span>
   </div>
 
   <!-- Banner topo -->
@@ -375,21 +375,15 @@ updateClock();
 
 /* Proteção contra inspeção */
 (function(){
-  document.addEventListener("contextmenu", e => {
-    e.preventDefault();
-    showBlockedOverlay();
-  });
+  document.addEventListener("contextmenu", e => { e.preventDefault(); showBlockedOverlay(); });
   document.addEventListener("keydown", e => {
-    let block = false;
-    if (e.key === "F12") block = true;
-    if (e.ctrlKey && e.shiftKey && e.key.toUpperCase() === "I") block = true;
-    if (e.ctrlKey && e.key.toUpperCase() === "U") block = true;
-    if (block){ e.preventDefault(); showBlockedOverlay(); }
+    if (["F12","U"].includes(e.key) || (e.ctrlKey && e.shiftKey && e.key.toUpperCase()==="I")){
+      e.preventDefault(); showBlockedOverlay();
+    }
   }, true);
 })();
 function showBlockedOverlay(){
-  let overlay = document.getElementById('blocked-overlay');
-  if(overlay){ overlay.style.display = 'flex'; }
+  document.getElementById('blocked-overlay').style.display = 'flex';
 }
 
 /* Jogos e fullscreen */
@@ -425,15 +419,6 @@ window.addEventListener("load",()=>{
   }
 });
 
-/* Contador de jogadores online (simulação) */
-function updateOnlineCounter(){
-  const el=document.getElementById("online-counter");
-  let count=Math.floor(50+Math.random()*450);
-  el.textContent="👥 Jogadores online agora: "+count;
-}
-setInterval(updateOnlineCounter,3000);
-updateOnlineCounter();
-
 /* Tema escuro/claro */
 function toggleTheme(){
   document.body.classList.toggle("light-mode");
@@ -444,6 +429,15 @@ window.addEventListener("load",()=>{
     document.body.classList.add("light-mode");
   }
 });
+
+/* Contador de jogadores online (simulação real-time) */
+function updateOnlineCounter(){
+  const el=document.getElementById("online-counter");
+  const count=Math.floor(50+Math.random()*450); // simula 50 a 500 jogadores online
+  el.textContent="👥 Jogadores online agora: "+count;
+}
+setInterval(updateOnlineCounter, 1000);
+updateOnlineCounter();
 </script>
 </body>
 </html>
