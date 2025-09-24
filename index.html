@@ -168,6 +168,22 @@ iframe {
 }
 .featured-game:hover { background: #ff4500; transform: scale(1.05); }
 
+/* Jogos atuais */
+.recent-games {
+  margin-top: 40px;
+  display: flex; justify-content: center; flex-wrap: wrap; gap: 20px;
+}
+.recent-game-card {
+  width: 350px; height: 200px;
+  background: #222;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.recent-game-card:hover { transform: scale(1.05); box-shadow: 0 6px 25px rgba(255,69,0,0.7); }
+.recent-game-card iframe { width: 100%; height: 100%; border: none; }
+
 /* Rodapé */
 footer {
   background: #111; padding: 20px; text-align: center;
@@ -180,10 +196,12 @@ footer a:hover { text-decoration: underline; }
 @media(max-width: 900px){
   .game-card { height: 60vh; }
   iframe { height: 100%; }
+  .recent-game-card { width: 80%; height: 180px; }
 }
 @media(max-width: 600px){
   .game-card { height: 50vh; }
   iframe { height: 100%; }
+  .recent-game-card { width: 100%; height: 160px; }
 }
 
 /* Overlay anti-inspeção */
@@ -220,10 +238,7 @@ footer a:hover { text-decoration: underline; }
   cursor: pointer;
   transition: 0.3s;
 }
-#cookie-banner button:hover {
-  background: #ffcc00;
-  color: #111;
-}
+#cookie-banner button:hover { background: #ffcc00; color: #111; }
 
 /* Tema claro */
 .light-mode {
@@ -235,16 +250,11 @@ footer a:hover { text-decoration: underline; }
 .light-mode .navbar a { color: #111; }
 .light-mode .featured-game { background: #eee; color: #111; }
 .light-mode .game-card { background: #f9f9f9; }
+.light-mode .recent-game-card { background: #f0f0f0; }
 .light-mode footer { background: #ddd; color: #111; }
 
 /* Fundo partículas */
-#particles-js {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0; left: 0;
-  z-index: -1;
-}
+#particles-js { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: -1; }
 </style>
 </head>
 <body>
@@ -272,7 +282,6 @@ footer a:hover { text-decoration: underline; }
     <span id="online-counter">👥 Jogadores online agora: 0</span>
   </div>
 
-  <!-- Banner topo -->
   <div class="ad-top">
     <ins class="adsbygoogle" style="display:block"
          data-ad-client="ca-pub-1241009751506011"
@@ -306,7 +315,20 @@ footer a:hover { text-decoration: underline; }
          data-desc="Puzzle Desafiante: teste sua lógica e habilidade!">Puzzle Desafiante</div>
   </div>
 
-  <!-- Banner inferior -->
+  <!-- Jogos mais atuais -->
+  <h2 style="text-align:center; margin-top:40px; color:#ffcc00;">🆕 Jogos Mais Atuais</h2>
+  <div class="recent-games">
+    <div class="recent-game-card">
+      <iframe src="https://funhtml5games.com?embed=shooter2025" title="Shooter 2025"></iframe>
+    </div>
+    <div class="recent-game-card">
+      <iframe src="https://funhtml5games.com?embed=adventure2025" title="Adventure 2025"></iframe>
+    </div>
+    <div class="recent-game-card">
+      <iframe src="https://funhtml5games.com?embed=racing2025" title="Racing 2025"></iframe>
+    </div>
+  </div>
+
   <div class="ad-bottom">
     <ins class="adsbygoogle" style="display:block"
          data-ad-client="ca-pub-1241009751506011"
@@ -317,10 +339,8 @@ footer a:hover { text-decoration: underline; }
   </div>
 </div>
 
-<!-- Botão flutuante -->
 <button class="fullscreen-btn" onclick="openFullscreen('game1')">Tela Cheia</button>
 
-<!-- Rodapé -->
 <footer>
   <p>&copy; 2025 Portal de Jogos FPS. Todos os direitos reservados.</p>
   <p><a href="index.html">Início</a> | 
@@ -328,7 +348,6 @@ footer a:hover { text-decoration: underline; }
      <a href="privacidade.html">Política de Privacidade</a></p>
 </footer>
 
-<!-- Overlay anti-inspeção -->
 <div id="blocked-overlay">
   <div>
     <h2>🚫 Ação bloqueada</h2>
@@ -337,32 +356,22 @@ footer a:hover { text-decoration: underline; }
   </div>
 </div>
 
-<!-- Banner de cookies -->
 <div id="cookie-banner">
   Este site utiliza cookies e anúncios do Google AdSense para melhorar sua experiência.
   <a href="privacidade.html" style="color:#ffcc00; text-decoration:underline;">Saiba mais</a>.
   <button onclick="aceitarCookies()">Aceitar</button>
 </div>
 
-<!-- Fundo partículas -->
 <div id="particles-js"></div>
 <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
 <script>
-  particlesJS("particles-js", {
-    "particles": {
-      "number": { "value": 80 },
-      "color": { "value": "#ff4500" },
-      "shape": { "type": "circle" },
-      "opacity": { "value": 0.5 },
-      "size": { "value": 3 },
-      "line_linked": { "enable": true, "color": "#ffcc00" },
-      "move": { "enable": true, "speed": 2 }
-    }
-  });
+particlesJS("particles-js",{
+  "particles":{"number":{"value":80},"color":{"value":"#ff4500"},"shape":{"type":"circle"},
+  "opacity":{"value":0.5},"size":{"value":3},"line_linked":{"enable":true,"color":"#ffcc00"},
+  "move":{"enable":true,"speed":2}});
 </script>
 
 <script>
-/* Relógio ao vivo futurista */
 function updateClock(){
   const now = new Date();
   const horas = now.getHours().toString().padStart(2,"0");
@@ -370,23 +379,18 @@ function updateClock(){
   const secs = now.getSeconds().toString().padStart(2,"0");
   document.getElementById("clock").textContent = `🕒 ${horas}:${mins}:${secs}`;
 }
-setInterval(updateClock, 1000);
-updateClock();
+setInterval(updateClock,1000); updateClock();
 
-/* Proteção contra inspeção */
 (function(){
-  document.addEventListener("contextmenu", e => { e.preventDefault(); showBlockedOverlay(); });
-  document.addEventListener("keydown", e => {
-    if (["F12","U"].includes(e.key) || (e.ctrlKey && e.shiftKey && e.key.toUpperCase()==="I")){
+  document.addEventListener("contextmenu", e=>{e.preventDefault(); showBlockedOverlay();});
+  document.addEventListener("keydown", e=>{
+    if(["F12","U"].includes(e.key)||(e.ctrlKey&&e.shiftKey&&e.key.toUpperCase()==="I")){
       e.preventDefault(); showBlockedOverlay();
     }
   }, true);
 })();
-function showBlockedOverlay(){
-  document.getElementById('blocked-overlay').style.display = 'flex';
-}
+function showBlockedOverlay(){document.getElementById('blocked-overlay').style.display='flex';}
 
-/* Jogos e fullscreen */
 function openFullscreen(id){
   const elem=document.getElementById(id);
   if(elem.requestFullscreen) elem.requestFullscreen();
@@ -395,9 +399,7 @@ function openFullscreen(id){
   else if(elem.msRequestFullscreen) elem.msRequestFullscreen();
 }
 document.addEventListener('keydown', e=>{
-  if(e.key==="Escape" && document.fullscreenElement){
-    document.exitFullscreen();
-  }
+  if(e.key==="Escape" && document.fullscreenElement) document.exitFullscreen();
 });
 document.querySelectorAll('.featured-game').forEach(game=>{
   game.addEventListener('click', ()=>{
@@ -408,35 +410,27 @@ document.querySelectorAll('.featured-game').forEach(game=>{
   });
 });
 
-/* Banner de cookies */
-function aceitarCookies(){
-  localStorage.setItem("cookiesAceitos","true");
-  document.getElementById("cookie-banner").style.display="none";
-}
-window.addEventListener("load",()=>{
-  if(!localStorage.getItem("cookiesAceitos")){
-    document.getElementById("cookie-banner").style.display="block";
-  }
-});
+function aceitarCookies(){ localStorage.setItem("cookiesAceitos","true"); document.getElementById("cookie-banner").style.display="none";}
+window.addEventListener("load",()=>{ if(!localStorage.getItem("cookiesAceitos")) document.getElementById("cookie-banner").style.display="block"; });
 
-/* Tema escuro/claro */
-function toggleTheme(){
+function toggleTheme() {
   document.body.classList.toggle("light-mode");
   localStorage.setItem("theme", document.body.classList.contains("light-mode") ? "light" : "dark");
 }
-window.addEventListener("load",()=>{
-  if(localStorage.getItem("theme")==="light"){
+
+window.addEventListener("load", () => {
+  if (localStorage.getItem("theme") === "light") {
     document.body.classList.add("light-mode");
   }
 });
 
-/* Contador de jogadores online (simulação real-time) */
-function updateOnlineCounter(){
-  const el=document.getElementById("online-counter");
-  const count=Math.floor(50+Math.random()*450); // simula 50 a 500 jogadores online
-  el.textContent="👥 Jogadores online agora: "+count;
+/* Contador de jogadores online (simulação) */
+function updateOnlineCounter() {
+  const el = document.getElementById("online-counter");
+  let count = Math.floor(50 + Math.random() * 450);
+  el.textContent = "👥 Jogadores online agora: " + count;
 }
-setInterval(updateOnlineCounter, 1000);
+setInterval(updateOnlineCounter, 3000);
 updateOnlineCounter();
 </script>
 </body>
