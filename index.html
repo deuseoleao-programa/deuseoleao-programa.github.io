@@ -248,22 +248,35 @@ footer a:hover { text-decoration: underline; }
 </div>
 
 <script>
-/* Proteção contra inspeção (atalhos, clique direito, etc.) */
+/* Proteção contra inspeção (apenas atalhos e clique direito específicos) */
 (function(){
-  document.addEventListener("contextmenu", e => e.preventDefault());
-  document.addEventListener("selectstart", e => e.preventDefault());
+  document.addEventListener("contextmenu", e => {
+    e.preventDefault();
+    showBlockedOverlay();
+  });
+
   document.addEventListener("keydown", e => {
     let block = false;
-    if (e.keyCode === 123) block = true; // F12
-    if (e.ctrlKey && e.keyCode === 85) block = true; // Ctrl+U
-    if (e.ctrlKey && e.shiftKey && [73,74,67].includes(e.keyCode)) block = true;
-    if (block){ e.preventDefault(); showBlockedOverlay(); }
+
+    // F12
+    if (e.key === "F12") block = true;
+
+    // Ctrl+Shift+I (DevTools)
+    if (e.ctrlKey && e.shiftKey && e.key.toUpperCase() === "I") block = true;
+
+    // Ctrl+U (ver código-fonte)
+    if (e.ctrlKey && e.key.toUpperCase() === "U") block = true;
+
+    if (block){
+      e.preventDefault();
+      showBlockedOverlay();
+    }
   }, true);
 })();
 
 function showBlockedOverlay(){
-  let overlay=document.getElementById('blocked-overlay');
-  if(overlay){ overlay.style.display='flex'; }
+  let overlay = document.getElementById('blocked-overlay');
+  if(overlay){ overlay.style.display = 'flex'; }
 }
 
 /* Jogos e fullscreen */
@@ -290,3 +303,4 @@ document.querySelectorAll('.featured-game').forEach(game=>{
 </script>
 </body>
 </html>
+
