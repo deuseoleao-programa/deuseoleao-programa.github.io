@@ -163,6 +163,37 @@ footer a:hover { text-decoration: underline; }
   align-items: center; justify-content: center; text-align: center;
   padding: 20px;
 }
+
+/* Banner de cookies */
+#cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(17,17,17,0.95);
+  color: #fff;
+  padding: 15px;
+  text-align: center;
+  font-size: 0.95rem;
+  box-shadow: 0 -4px 15px rgba(0,0,0,0.6);
+  display: none;
+  z-index: 10000;
+}
+#cookie-banner button {
+  background: #ff4500;
+  border: none;
+  padding: 8px 15px;
+  margin-left: 10px;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+#cookie-banner button:hover {
+  background: #ffcc00;
+  color: #111;
+}
 </style>
 </head>
 <body>
@@ -192,7 +223,7 @@ footer a:hover { text-decoration: underline; }
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
 
-  <!-- Jogo principal reinserido -->
+  <!-- Jogo principal -->
   <div class="game-card">
     <iframe id="game1" src="https://funhtml5games.com?embed=shoot"
             allowfullscreen loading="lazy"></iframe>
@@ -247,33 +278,28 @@ footer a:hover { text-decoration: underline; }
   </div>
 </div>
 
+<!-- Banner de cookies -->
+<div id="cookie-banner">
+  Este site utiliza cookies e anúncios do Google AdSense para melhorar sua experiência.
+  <a href="privacidade.html" style="color:#ffcc00; text-decoration:underline;">Saiba mais</a>.
+  <button onclick="aceitarCookies()">Aceitar</button>
+</div>
+
 <script>
-/* Proteção contra inspeção (apenas atalhos e clique direito específicos) */
+/* Proteção contra inspeção */
 (function(){
   document.addEventListener("contextmenu", e => {
     e.preventDefault();
     showBlockedOverlay();
   });
-
   document.addEventListener("keydown", e => {
     let block = false;
-
-    // F12
     if (e.key === "F12") block = true;
-
-    // Ctrl+Shift+I (DevTools)
     if (e.ctrlKey && e.shiftKey && e.key.toUpperCase() === "I") block = true;
-
-    // Ctrl+U (ver código-fonte)
     if (e.ctrlKey && e.key.toUpperCase() === "U") block = true;
-
-    if (block){
-      e.preventDefault();
-      showBlockedOverlay();
-    }
+    if (block){ e.preventDefault(); showBlockedOverlay(); }
   }, true);
 })();
-
 function showBlockedOverlay(){
   let overlay = document.getElementById('blocked-overlay');
   if(overlay){ overlay.style.display = 'flex'; }
@@ -300,7 +326,17 @@ document.querySelectorAll('.featured-game').forEach(game=>{
     window.scrollTo({top:iframe.offsetTop-20,behavior:'smooth'});
   });
 });
+
+/* Banner de cookies */
+function aceitarCookies(){
+  localStorage.setItem("cookiesAceitos","true");
+  document.getElementById("cookie-banner").style.display="none";
+}
+window.addEventListener("load",()=>{
+  if(!localStorage.getItem("cookiesAceitos")){
+    document.getElementById("cookie-banner").style.display="block";
+  }
+});
 </script>
 </body>
 </html>
-
