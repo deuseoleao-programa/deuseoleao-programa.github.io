@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Portal de Jogos FPS</title>
 <meta name="description" content="Portal de Jogos FPS: jogue online grátis FPS, aventura, estratégia e mais diretamente no navegador.">
+
+<!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1241009751506011"
 crossorigin="anonymous"></script>
 
@@ -182,6 +184,26 @@ iframe {
   transform: scale(1.05);
 }
 
+/* Rodapé */
+footer {
+  background: #111;
+  padding: 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-top: auto;
+}
+
+footer a {
+  color: #ff4500;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
 /* Responsividade */
 @media(max-width: 900px){
   .game-card { height: 60vh; }
@@ -260,6 +282,16 @@ iframe {
 
 <!-- Botão flutuante -->
 <button class="fullscreen-btn" onclick="openFullscreen('game1')">Tela Cheia</button>
+
+<!-- Rodapé -->
+<footer>
+  <p>&copy; 2025 Portal de Jogos FPS. Todos os direitos reservados.</p>
+  <p>
+    <a href="index.html">Início</a> | 
+    <a href="sobre.html">Sobre</a> | 
+    <a href="privacidade.html">Política de Privacidade</a>
+  </p>
+</footer>
 
 <script>
 function openFullscreen(id){
