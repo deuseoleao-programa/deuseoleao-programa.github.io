@@ -19,9 +19,6 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   transition: background 0.4s, color 0.4s;
 }
@@ -89,6 +86,16 @@ header h1 { font-size: 2rem; color: #ff4500; }
   font-size: 1rem;
   color: #0f0;
   margin-top: 8px;
+}
+#clock {
+  margin-top: 8px;
+  font-size: 0.95rem;
+  color: #0ff;
+}
+#visit-counter {
+  margin-top: 5px;
+  font-size: 0.9rem;
+  color: #ffcc00;
 }
 
 /* Container principal */
@@ -229,6 +236,15 @@ footer a:hover { text-decoration: underline; }
 .light-mode .featured-game { background: #eee; color: #111; }
 .light-mode .game-card { background: #f9f9f9; }
 .light-mode footer { background: #ddd; color: #111; }
+
+/* Fundo partículas */
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0; left: 0;
+  z-index: -1;
+}
 </style>
 </head>
 <body>
@@ -236,6 +252,12 @@ footer a:hover { text-decoration: underline; }
 <header>
   <h1>🎮 Portal de Jogos FPS</h1>
   <button class="theme-toggle" onclick="toggleTheme()">🌙 Tema</button>
+  <div id="clock"></div>
+  <div id="visit-counter">
+    👁️ Visitas:
+    <img src="https://hitwebcounter.com/counter/counter.php?page=1234567&style=0006&nbdigits=5&type=page&initCount=0"
+         title="Contador de Visitas" alt="contador" border="0">
+  </div>
   <div class="navbar">
     <a href="index.html">Início</a>
     <a href="sobre.html">Sobre</a>
@@ -322,7 +344,35 @@ footer a:hover { text-decoration: underline; }
   <button onclick="aceitarCookies()">Aceitar</button>
 </div>
 
+<!-- Fundo partículas -->
+<div id="particles-js"></div>
+<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
 <script>
+  particlesJS("particles-js", {
+    "particles": {
+      "number": { "value": 80 },
+      "color": { "value": "#ff4500" },
+      "shape": { "type": "circle" },
+      "opacity": { "value": 0.5 },
+      "size": { "value": 3 },
+      "line_linked": { "enable": true, "color": "#ffcc00" },
+      "move": { "enable": true, "speed": 2 }
+    }
+  });
+</script>
+
+<script>
+/* Relógio ao vivo futurista */
+function updateClock(){
+  const now = new Date();
+  const horas = now.getHours().toString().padStart(2,"0");
+  const mins = now.getMinutes().toString().padStart(2,"0");
+  const secs = now.getSeconds().toString().padStart(2,"0");
+  document.getElementById("clock").textContent = `🕒 ${horas}:${mins}:${secs}`;
+}
+setInterval(updateClock, 1000);
+updateClock();
+
 /* Proteção contra inspeção */
 (function(){
   document.addEventListener("contextmenu", e => {
