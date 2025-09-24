@@ -3,26 +3,37 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Política de Privacidade - Portal de Jogos FPS</title>
-<meta name="description" content="Leia nossa política de privacidade e entenda como seus dados são tratados.">
+<title>Portal de Jogos FPS</title>
+<meta name="description" content="Portal de Jogos FPS: jogue online grátis FPS, aventura, estratégia e mais diretamente no navegador.">
+
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1241009751506011"
+crossorigin="anonymous"></script>
 
 <style>
+* { box-sizing: border-box; margin:0; padding:0; }
+
 body {
   font-family: 'Arial', sans-serif;
   background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
   color: white;
-  margin: 0;
-  padding: 0;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  /* dificulta seleção de texto globalmente */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
+/* Cabeçalho */
 header {
   text-align: center;
   background: #1b1b1b;
   padding: 20px 10px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  z-index: 10;
 }
 
 header h1 {
@@ -30,6 +41,7 @@ header h1 {
   color: #ff4500;
 }
 
+/* Navbar */
 .navbar {
   display: flex;
   justify-content: center;
@@ -53,19 +65,131 @@ header h1 {
   color: #111;
 }
 
+/* Destaque no topo */
+.hero-banner {
+  background: #222;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  font-size: 1.3rem;
+  color: #ffcc00;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+  margin-bottom: 20px;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 10px #ffcc00; }
+  to { text-shadow: 0 0 25px #ff4500; }
+}
+
+/* Container principal */
 .container {
   flex: 1;
-  padding: 30px;
-  max-width: 900px;
-  margin: auto;
-  line-height: 1.6;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  flex-direction: column;
+  gap: 20px;
 }
 
-h2 {
-  color: #ffcc00;
-  margin-bottom: 15px;
+/* Anúncios */
+.ad-top, .ad-bottom {
+  background: #111;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
 }
 
+/* Card do jogo */
+.game-card {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 300px);
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.7);
+  background: #1a1a1a;
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+  pointer-events: auto; /* permite interação com o jogo */
+  transition: transform 0.3s;
+}
+
+/* Botão flutuante */
+.fullscreen-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px 25px;
+  background: #ff4500;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  transition: 0.3s;
+  z-index: 999;
+}
+
+.fullscreen-btn:hover {
+  background: #ff6347;
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #ff4500;
+}
+
+/* Descrição do jogo */
+.game-description {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 1.1rem;
+  color: #ccc;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
+
+/* Seção de destaques de jogos */
+.featured-games {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.featured-game {
+  width: 180px;
+  height: 100px;
+  background: #222;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #fff;
+  font-size: 0.9rem;
+  transition: 0.3s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+.featured-game:hover {
+  background: #ff4500;
+  transform: scale(1.05);
+}
+
+/* Rodapé */
 footer {
   background: #111;
   padding: 20px;
@@ -84,6 +208,37 @@ footer a {
 footer a:hover {
   text-decoration: underline;
 }
+
+/* Responsividade */
+@media(max-width: 900px){
+  .game-card { height: 60vh; }
+  iframe { height: 100%; }
+  .fullscreen-btn { padding: 10px 20px; font-size: 0.9rem; }
+  header h1 { font-size: 1.8rem; }
+  .featured-game { width: 45%; height: 80px; }
+}
+
+@media(max-width: 600px){
+  .game-card { height: 50vh; }
+  iframe { height: 100%; }
+  .fullscreen-btn { padding: 8px 15px; font-size: 0.8rem; }
+  header h1 { font-size: 1.5rem; }
+  .featured-game { width: 80%; height: 70px; }
+}
+
+/* Mensagem exibida quando detectamos inspeção (invisível por padrão) */
+#blocked-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: #000;
+  color: #fff;
+  z-index: 99999;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
 </style>
 </head>
 <body>
@@ -98,23 +253,56 @@ footer a:hover {
 </header>
 
 <div class="container">
-  <h2>Política de Privacidade</h2>
-  <p>Levamos sua privacidade a sério. Ao acessar o <strong>Portal de Jogos FPS</strong>, algumas informações podem ser coletadas de forma automática, como endereço IP, navegador e cookies. Isso é feito para melhorar sua experiência de navegação.</p>
 
-  <h2>Uso de Cookies</h2>
-  <p>Utilizamos cookies e tecnologias semelhantes para exibir anúncios relevantes (através do Google AdSense) e para análises de uso do site.</p>
+  <div class="hero-banner">
+    🔥 Bem-vindo ao Portal de Jogos FPS! Explore, jogue e divirta-se com os melhores jogos online grátis! 🎮
+  </div>
 
-  <h2>Google AdSense</h2>
-  <p>Nosso site exibe anúncios fornecidos pelo Google AdSense. O Google pode usar cookies para personalizar os anúncios com base em suas visitas a este e a outros sites. Você pode desativar a personalização em: 
-  <a href="https://www.google.com/settings/ads" target="_blank">Configurações de Anúncios</a>.</p>
+  <!-- Banner topo -->
+  <div class="ad-top">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-1241009751506011"
+         data-ad-slot="1234567890"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
 
-  <h2>Seus Direitos</h2>
-  <p>Você pode desativar os cookies diretamente nas configurações do seu navegador, se desejar.</p>
+  <!-- Jogo principal -->
+  <div class="game-card">
+    <iframe id="game1" src="https://funhtml5games.com?embed=shoot" allowfullscreen loading="lazy"></iframe>
+  </div>
 
-  <h2>Contato</h2>
-  <p>Se tiver dúvidas sobre esta política, envie um e-mail para: <strong>contato@seudominio.com</strong></p>
+  <div class="game-description" id="game-description">
+    FPS Shoot é um jogo de tiro em primeira pessoa. Use W A S D ou as setas para se mover e clique para atirar.
+  </div>
+
+  <!-- Destaques de outros jogos -->
+  <div class="featured-games">
+    <div class="featured-game" data-src="https://funhtml5games.com?embed=shoot" data-desc="FPS Shoot é um jogo de tiro em primeira pessoa. Use W A S D ou as setas para se mover e clique para atirar.">FPS Shoot</div>
+    <div class="featured-game" data-src="https://funhtml5games.com?embed=adventure" data-desc="Aventura Épica: explore mundos incríveis e complete missões emocionantes!">Aventura Épica</div>
+    <div class="featured-game" data-src="https://funhtml5games.com?embed=strategy" data-desc="Estratégia Tática: planeje seus movimentos e derrote seus inimigos!">Estratégia Tática</div>
+    <div class="featured-game" data-src="https://funhtml5games.com?embed=racing" data-desc="Corrida Radical: acelere e supere todos os desafios!">Corrida Radical</div>
+    <div class="featured-game" data-src="https://funhtml5games.com?embed=puzzle" data-desc="Puzzle Desafiante: teste sua lógica e habilidade!">Puzzle Desafiante</div>
+  </div>
+
+  <!-- Banner inferior -->
+  <div class="ad-bottom">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-1241009751506011"
+         data-ad-slot="1234567891"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
 </div>
 
+<!-- Botão flutuante -->
+<button class="fullscreen-btn" onclick="openFullscreen('game1')">Tela Cheia</button>
+
+<!-- Rodapé -->
 <footer>
   <p>&copy; 2025 Portal de Jogos FPS. Todos os direitos reservados.</p>
   <p>
@@ -124,29 +312,184 @@ footer a:hover {
   </p>
 </footer>
 
-<!-- Proteção contra cópia de código -->
+<!-- Overlay que aparece se detectarmos inspeção -->
+<div id="blocked-overlay">
+  <div>
+    <h2>🚫 Ação bloqueada</h2>
+    <p>Detectamos tentativa de inspeção do site. Por segurança o conteúdo foi bloqueado.</p>
+    <p>Se você é um usuário legítimo, por favor recarregue a página.</p>
+  </div>
+</div>
+
 <script>
-// Bloquear clique direito
-document.addEventListener("contextmenu", function(e){
-  e.preventDefault();
-});
+// --- Proteções usuais (clique direito, seleção, atalhos) ---
+(function(){
+  // bloquear clique direito
+  document.addEventListener("contextmenu", function(e){ e.preventDefault(); });
 
-// Bloquear teclas de atalho (F12, Ctrl+U, Ctrl+Shift+I/J)
-document.addEventListener("keydown", function(e) {
-  if (
-    e.keyCode == 123 || // F12
-    (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74)) || // Ctrl+Shift+I/J
-    (e.ctrlKey && e.keyCode == 85) // Ctrl+U
-  ) {
-    e.preventDefault();
-    alert("🚫 Ação bloqueada!");
+  // bloquear seleção via mouse/teclado
+  document.addEventListener("selectstart", function(e){ e.preventDefault(); });
+  document.addEventListener("mousedown", function(e){
+    // allow clicks inside iframes (games) by ignoring clicks on iframe children
+    if (e.target.tagName.toLowerCase() === 'iframe') return;
+    // otherwise prevent drag/selection start
+    // e.preventDefault(); // desabilitado para não quebrar interações normais
+  });
+
+  // bloquear teclas de atalho comuns (F12, Ctrl+U, Ctrl+Shift+I/J, Ctrl+Shift+C)
+  document.addEventListener("keydown", function(e) {
+    // keyCode obsoletos, mas mantidos para compatibilidade
+    var forbidden = false;
+    if (e.keyCode === 123) forbidden = true; // F12
+    if (e.ctrlKey && e.keyCode === 85) forbidden = true; // Ctrl+U
+    if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) forbidden = true; // Ctrl+Shift+I/J/C
+    if (forbidden) {
+      e.preventDefault();
+      e.stopPropagation();
+      showBlockedOverlay();
+      return false;
+    }
+  }, true);
+})();
+
+// --- Detecção reforçada de DevTools ---
+// Combinação de checks: diferenças de dimensão, console-open trick e timing.
+// Ao detectar, bloqueia o conteúdo substituindo por overlay.
+
+(function(){
+  var devtools = {open: false, orientation: null};
+  var threshold = 160; // limiar em pixels para diferença de dim (ajustável)
+
+  // 1) checagem por diferença entre outer e inner (simples e rápida)
+  function checkSize() {
+    var widthDiff = Math.abs(window.outerWidth - window.innerWidth);
+    var heightDiff = Math.abs(window.outerHeight - window.innerHeight);
+    if (widthDiff > threshold || heightDiff > threshold) {
+      return true;
+    }
+    return false;
   }
-});
 
-// Bloquear seleção de texto
-document.addEventListener("selectstart", function(e){
-  e.preventDefault();
-});
+  // 2) checagem por tempo de execução do debugger (para some browsers)
+  var start = Date.now();
+  function checkDebuggerTime() {
+    var t0 = Date.now();
+    // chama um loop curto com debugger; em muitos navegadores modernos isso é mitigado, mas tentamos medir delay
+    for (var i=0;i<100000;i++){ /* vazio */ }
+    var t1 = Date.now();
+    if (t1 - t0 > 200) return true; // se levou muito tempo, pode ter debugger/DevTools aberto
+    return false;
+  }
+
+  // 3) checagem via console behaviour: define getter que dispara quando console tenta inspecionar o objeto
+  function checkConsole() {
+    var opened = false;
+    try {
+      var element = new Image();
+      Object.defineProperty(element, 'id', {
+        get: function () {
+          opened = true; // acionado quando console tenta obter a propriedade para exibir
+          return 'dev';
+        }
+      });
+      console.log('%c', element);
+    } catch (e) {
+      // ignore
+    }
+    return opened;
+  }
+
+  // aciona o bloqueio visual + tentativa de neutralizar scripts
+  window.showBlockedOverlay = function(){
+    try {
+      var overlay = document.getElementById('blocked-overlay');
+      if (overlay) {
+        overlay.style.display = 'flex';
+        // tenta esconder conteúdo principal (mantendo overlay acima)
+        var containers = document.querySelectorAll('header, .container, footer, .fullscreen-btn');
+        containers.forEach(function(el){ el.style.filter = 'blur(6px)'; el.style.pointerEvents = 'none'; });
+        // remove event listeners de alto nível (tentativa)
+        window.onkeydown = null;
+        window.onkeypress = null;
+        window.onkeyup = null;
+        // tenta limpar scripts que possam revelar lógica (não garante)
+        var scripts = document.querySelectorAll('script');
+        scripts.forEach(function(s){
+          try { s.parentNode.removeChild(s); } catch(e){}
+        });
+      }
+    } catch (err) {
+      // se algo falhar, tenta forçar reload como fallback
+      try { location.reload(); } catch(e) {}
+    }
+  };
+
+  // loop de monitoramento periódico (intervalo pequeno)
+  var last = Date.now();
+  var monitor = setInterval(function(){
+    // checagens combinadas
+    var a = checkSize();
+    var b = checkConsole();
+    var c = (Date.now() - last) > 10000 ? checkDebuggerTime() : false; // timing check só ocasionalmente
+    if (a || b || c) {
+      devtools.open = true;
+      showBlockedOverlay();
+      clearInterval(monitor);
+    }
+    last = Date.now();
+  }, 800);
+
+  // também checar na mudança de visibilidade (alguns devtools alteram isso)
+  document.addEventListener('visibilitychange', function(){
+    if (document.visibilityState === 'visible') {
+      // rechecar imediatamente
+      if (checkSize() || checkConsole()) {
+        showBlockedOverlay();
+      }
+    }
+  });
+})();
+
+// --- Mantém a funcionalidade dos jogos e destaques ---
+// Atualiza iframe e descrição ao clicar nos destaques
+(function(){
+  function openFullscreen(id){
+    const elem=document.getElementById(id);
+    if(!elem.src) elem.src=elem.getAttribute('data-src');
+    elem.style.pointerEvents="auto";
+    if(elem.requestFullscreen){ elem.requestFullscreen(); }
+    else if(elem.mozRequestFullScreen){ elem.mozRequestFullScreen(); }
+    else if(elem.webkitRequestFullscreen){ elem.webkitRequestFullscreen(); }
+    else if(elem.msRequestFullscreen){ elem.msRequestFullscreen(); }
+  }
+  window.openFullscreen = openFullscreen;
+
+  // ESC sai do fullscreen
+  document.addEventListener('keydown', function(e){
+    if(e.key === "Escape" || e.key === "Esc"){
+      if(document.fullscreenElement) document.exitFullscreen();
+    }
+  });
+
+  const featuredGames = document.querySelectorAll('.featured-game');
+  featuredGames.forEach(game => {
+    game.addEventListener('click', () => {
+      const iframe = document.getElementById('game1');
+      const newSrc = game.getAttribute('data-src');
+      const newDesc = game.getAttribute('data-desc');
+
+      // Tenta carregar no iframe
+      try {
+        iframe.src = newSrc;
+        document.getElementById('game-description').textContent = newDesc;
+        window.scrollTo({ top: iframe.offsetTop - 20, behavior: 'smooth' });
+      } catch (e) {
+        // Se não funcionar, abre em nova aba
+        window.open(newSrc, '_blank');
+      }
+    });
+  });
+})();
 </script>
 
 </body>
