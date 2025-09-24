@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /privacidade.html
+Disallow: /sobre.html
+Allow: /
+
+Sitemap: https://deuseleao-programa.github.io/sitemap.xml
