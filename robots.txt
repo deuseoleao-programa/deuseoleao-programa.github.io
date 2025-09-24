@@ -1,6 +1,11 @@
 User-agent: *
-Disallow: /privacidade.html
-Disallow: /sobre.html
+Disallow: /admin/
+Disallow: /login/
 Allow: /
 
+# Sitemap do site
 Sitemap: https://deuseleao-programa.github.io/sitemap.xml
+
+# Política de Privacidade (necessária para o Google AdSense)
+# URL direta da sua página de privacidade:
+Privacy-policy: https://deuseleao-programa.github.io/privacidade.html
