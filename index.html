@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -336,6 +338,7 @@ footer a:hover { text-decoration: underline; }
     <span id="online-counter">👥 Jogadores online agora: 0</span>
   </div>
 
+  <!-- Anúncio no topo -->
   <div class="ad-top">
     <ins class="adsbygoogle" style="display:block"
          data-ad-client="ca-pub-1241009751506011"
@@ -383,6 +386,7 @@ footer a:hover { text-decoration: underline; }
     </div>
   </div>
 
+  <!-- Anúncio no rodapé -->
   <div class="ad-bottom">
     <ins class="adsbygoogle" style="display:block"
          data-ad-client="ca-pub-1241009751506011"
@@ -424,84 +428,56 @@ footer a:hover { text-decoration: underline; }
     <p>Detectamos tentativa de inspeção do site. Por segurança o conteúdo foi bloqueado.</p>
     <p>Se você é um usuário legítimo, por favor recarregue a página.</p>
   </div>
-</div>
-
 <div id="cookie-banner">
   Este site utiliza cookies e anúncios do Google AdSense para melhorar sua experiência.
   <a href="privacidade.html" style="color:#ffcc00; text-decoration:underline;">Saiba mais</a>.
   <button onclick="aceitarCookies()">Aceitar</button>
 </div>
 
-<div id="particles-js"></div>
-<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+<div id="particles-js">
+    <!-- Conteúdo principal do seu site -->
+    <header>
+        <h1>Bem-vindo ao meu site</h1>
+        <p>Aqui você encontra novidades, informações e muito mais!</p>
+    </header>
+
+    <!-- Exemplo de bloco de anúncio automático do AdSense para AMP -->
+    <amp-auto-ads type="adsense"
+        data-ad-client="ca-pub-1241009751506011">
+    </amp-auto-ads>
+
+    <main>
+        <section>
+            <h2>Sobre</h2>
+            <p>Este é o meu site hospedado no GitHub Pages e integrado ao Google AdSense.</p>
+        </section>
+
+        <section>
+            <h2>Contato</h2>
+            <p>Se tiver sugestões de melhorias, entre em contato:</p>
+            <ul>
+                <li><b>Email:</b> <a href="mailto:lucassimpat@gmail.com">lucassimpat@gmail.com</a></li>
+                <li><b>WhatsApp:</b> <a href="https://wa.me/5564993287107" target="_blank">Clique aqui para conversar</a></li>
+            </ul>
+        </section>
+    </main>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script>
-particlesJS("particles-js",{
-  "particles":{"number":{"value":80},"color":{"value":"#ff4500"},"shape":{"type":"circle"},
-  "opacity":{"value":0.5},"size":{"value":3},"line_linked":{"enable":true,"color":"#ffcc00"},
-  "move":{"enable":true,"speed":2}});
-</script>
-
-<script>
-function updateClock(){
-  const now = new Date();
-  const horas = now.getHours().toString().padStart(2,"0");
-  const mins = now.getMinutes().toString().padStart(2,"0");
-  const secs = now.getSeconds().toString().padStart(2,"0");
-  document.getElementById("clock").textContent = `🕒 ${horas}:${mins}:${secs}`;
-}
-setInterval(updateClock,1000); updateClock();
-
-(function(){
-  document.addEventListener("contextmenu", e=>{e.preventDefault(); showBlockedOverlay();});
-  document.addEventListener("keydown", e=>{
-    if(["F12","U"].includes(e.key)||(e.ctrlKey&&e.shiftKey&&e.key.toUpperCase()==="I")){
-      e.preventDefault(); showBlockedOverlay();
-    }
-  }, true);
-})();
-function showBlockedOverlay(){document.getElementById('blocked-overlay').style.display='flex';}
-
-function openFullscreen(id){
-  const elem=document.getElementById(id);
-  if(elem.requestFullscreen) elem.requestFullscreen();
-  else if(elem.mozRequestFullScreen) elem.mozRequestFullScreen();
-  else if(elem.webkitRequestFullscreen) elem.webkitRequestFullscreen();
-  else if(elem.msRequestFullscreen) elem.msRequestFullscreen();
-}
-document.addEventListener('keydown', e=>{
-  if(e.key==="Escape" && document.fullscreenElement) document.exitFullscreen();
-});
-document.querySelectorAll('.featured-game').forEach(game=>{
-  game.addEventListener('click', ()=>{
-    const iframe=document.getElementById('game1');
-    iframe.src=game.dataset.src;
-    document.getElementById('game-description').textContent=game.dataset.desc;
-    window.scrollTo({top:iframe.offsetTop-20,behavior:'smooth'});
+  particlesJS.load('particles-js', 'particles.json', function() {
+    console.log('particles.js carregado');
   });
-});
-
-function aceitarCookies(){ localStorage.setItem("cookiesAceitos","true"); document.getElementById("cookie-banner").style.display="none";}
-window.addEventListener("load",()=>{ if(!localStorage.getItem("cookiesAceitos")) document.getElementById("cookie-banner").style.display="block"; });
-
-function toggleTheme() {
-  document.body.classList.toggle("light-mode");
-  localStorage.setItem("theme", document.body.classList.contains("light-mode") ? "light" : "dark");
-}
-
-window.addEventListener("load", () => {
-  if (localStorage.getItem("theme") === "light") {
-    document.body.classList.add("light-mode");
-  }
-});
-
-/* Contador de jogadores online (simulação) */
-function updateOnlineCounter() {
-  const el = document.getElementById("online-counter");
-  let count = Math.floor(50 + Math.random() * 450);
-  el.textContent = "👥 Jogadores online agora: " + count;
-}
-setInterval(updateOnlineCounter, 3000);
-updateOnlineCounter();
 </script>
+
+<!-- Rodapé -->
+<footer>
+  <p>&copy; 2025 Lucas Daniel Santos - Todos os direitos reservados.</p>
+</footer>
 </body>
 </html>
+
+
+  
+      
